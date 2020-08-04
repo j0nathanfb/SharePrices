@@ -27,10 +27,10 @@ namespace Search.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void NullUserIdInConstructor()
         {
-            SharePrices.GetBestBuySellIndices(new double[] { });
+            SharePrices.GetBestBuySellIndices(new decimal[] { });
         }
 
-        readonly double[] _firstMonthPrices = new double[] { 18.93, 20.25, 17.05, 16.59, 21.09, 16.22, 21.43, 27.13, 18.62, 21.31, 23.96, 25.52, 19.64, 23.49, 15.28, 22.77, 23.1, 26.58, 27.03, 23.75, 27.39, 15.93, 17.83, 18.82, 21.56, 25.33, 25, 19.33, 22.08, 24.03 };
-        readonly double[] _secondMonthPrices = new double[] { 22.74, 22.27, 20.61, 26.15, 21.68, 21.51, 19.66, 24.11, 20.63, 20.96, 26.56, 26.67, 26.02, 27.20, 19.13, 16.57, 26.71, 25.91, 17.51, 15.79, 26.19, 18.57, 19.03, 19.02, 19.97, 19.04, 21.06, 25.94, 17.03, 15.61 };
+        readonly decimal[] _firstMonthPrices = new decimal[] { 18.93M, 20.25M, 17.05M, 16.59M, 21.09M, 16.22M, 21.43M, 27.13M, 18.62M, 21.31M, 23.96M, 25.52M, 19.64M, 23.49M, 15.28M, 22.77M, 23.1M, 26.58M, 27.03M, 23.75M, 27.39M, 15.93M, 17.83M, 18.82M, 21.56M, 25.33M, 25, 19.33M, 22.08M, 24.03M };
+        readonly decimal[] _secondMonthPrices = new decimal[] { 22.74M, 22.27M, 20.61M, 26.15M, 21.68M, 21.51M, 19.66M, 24.11M, 20.63M, 20.96M, 26.56M, 26.67M, 26.02M, 27.20M, 19.13M, 16.57M, 26.71M, 25.91M, 17.51M, 15.79M, 26.19M, 18.57M, 19.03M, 19.02M, 19.97M, 19.04M, 21.06M, 25.94M, 17.03M, 15.61M };
     }
 }

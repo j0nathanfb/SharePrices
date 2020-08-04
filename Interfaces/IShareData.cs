@@ -8,6 +8,6 @@ namespace Interfaces
 {
     public interface IShareData
     {
-        double[] GetShareData();
+        decimal[] GetShareData();
     }
 }

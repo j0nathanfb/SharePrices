@@ -24,14 +24,14 @@ namespace Model.Tests
         public void BuyPriceIsCorrect()
         {
             var info = new BuySellInfo(_shareData, 14, 20);
-            Assert.AreEqual(15.28, info.BuyPrice);
+            Assert.AreEqual(15.28M, info.BuyPrice);
         }
 
         [TestMethod]
         public void SellPriceIsCorrect()
         {
             var info = new BuySellInfo(_shareData, 14, 20);
-            Assert.AreEqual(27.39, info.SellPrice);
+            Assert.AreEqual(27.39M, info.SellPrice);
         }
 
         [TestMethod]
@@ -39,11 +39,9 @@ namespace Model.Tests
         {
             var info = new BuySellInfo(_shareData, 14, 20);
 
-            var str = info.ToString();
-
             Assert.AreEqual("15(15.28),21(27.39)", info.ToString());
         }
 
-        readonly double[] _shareData = new double[] { 18.93, 20.25, 17.05, 16.59, 21.09, 16.22, 21.43, 27.13, 18.62, 21.31, 23.96, 25.52, 19.64, 23.49, 15.28, 22.77, 23.1, 26.58, 27.03, 23.75, 27.39, 15.93, 17.83, 18.82, 21.56, 25.33, 25, 19.33, 22.08, 24.03 };
+        private readonly decimal[] _shareData = { 18.93M, 20.25M, 17.05M, 16.59M, 21.09M, 16.22M, 21.43M, 27.13M, 18.62M, 21.31M, 23.96M, 25.52M, 19.64M, 23.49M, 15.28M, 22.77M, 23.1M, 26.58M, 27.03M, 23.75M, 27.39M, 15.93M, 17.83M, 18.82M, 21.56M, 25.33M, 25, 19.33M, 22.08M, 24.03M };
     }
 }

@@ -20,7 +20,7 @@ namespace App
             _filePath = filePath;
         }
 
-        public double[] GetShareData()
+        public decimal[] GetShareData()
         {
             var sharePriceText = GetSharePriceText(_filePath);
             var data = GetSharePriceData(sharePriceText);
@@ -35,9 +35,9 @@ namespace App
             return File.ReadAllText(filePath);
         }
 
-        static double[] GetSharePriceData(string sharePriceText)
+        static decimal[] GetSharePriceData(string sharePriceText)
         {
-            return sharePriceText.Split(',').Select(Convert.ToDouble).ToArray();
+            return sharePriceText.Split(',').Select(Convert.ToDecimal).ToArray();
         }
 
         private readonly string _filePath;

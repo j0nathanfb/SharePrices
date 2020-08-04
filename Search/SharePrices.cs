@@ -9,11 +9,11 @@ namespace Search
         /// </summary>
         /// <param name="sharePrices">List of share prices in chronological order.</param>
         /// <returns>Best buy and sell indices for the given range of values.</returns>
-        public static Tuple<int, int> GetBestBuySellIndices(double[] sharePrices)
+        public static Tuple<int, int> GetBestBuySellIndices(decimal[] sharePrices)
         {
             if (sharePrices.Length == 0) throw new ArgumentException("sharePrices array is empty!", nameof(sharePrices));
 
-            var maxIncrease = 0.0;
+            var maxIncrease = 0.0M;
 
             var buyIndex = 0;
             var sellIndex = 0;

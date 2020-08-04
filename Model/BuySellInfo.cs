@@ -6,11 +6,11 @@
     public class BuySellInfo
     {
         public int BuyDay { get; }
-        public double BuyPrice { get; }
+        public decimal BuyPrice { get; }
         public int SellDay { get; }
-        public double SellPrice { get; }
+        public decimal SellPrice { get; }
 
-        public BuySellInfo(double[] shareData, int buyIndex, int sellIndex)
+        public BuySellInfo(decimal[] shareData, int buyIndex, int sellIndex)
         {
             BuyDay = MapIndexToDayNumber(buyIndex);
             SellDay = MapIndexToDayNumber(sellIndex);
