@@ -11,7 +11,8 @@ namespace Search
         /// <returns>Best buy and sell indices for the given range of values.</returns>
         public static Tuple<int, int> GetBestBuySellIndices(decimal[] sharePrices)
         {
-            if (sharePrices.Length == 0) throw new ArgumentException("sharePrices array is empty!", nameof(sharePrices));
+            if (sharePrices.Length == 0) throw new ArgumentException("sharePrices array is empty", nameof(sharePrices));
+            if (sharePrices.Length > 30) throw new ArgumentException("sharePrices should contain a maximum of 30 values", nameof(sharePrices));
 
             var maxIncrease = 0.0M;
 
