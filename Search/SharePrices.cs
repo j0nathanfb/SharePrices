@@ -8,11 +8,11 @@ namespace Search
         /// Gets the BuyIndex and SellIndex of the sharePrices list to provide the best profit range.
         /// </summary>
         /// <param name="sharePrices">List of share prices in chronological order.</param>
-        /// <returns>Best buy and sell indices for the given range of values.</returns>
+        /// <returns>Best buy and sell indices for the given range of values. The First item is the Buy Day index. The second item is Sell Day index</returns>
         public static Tuple<int, int> GetBestBuySellIndices(decimal[] sharePrices)
         {
             if (sharePrices.Length == 0) throw new ArgumentException("sharePrices array is empty", nameof(sharePrices));
-            if (sharePrices.Length > 30) throw new ArgumentException("sharePrices should contain a maximum of 30 values", nameof(sharePrices));
+            if (sharePrices.Length > 30) throw new ArgumentException("sharePrices array length is greater than 30", nameof(sharePrices));
 
             var maxIncrease = 0.0M;
 
