@@ -6,7 +6,7 @@ using System.Linq;
 namespace App
 {
     /// <summary>
-    /// Represents a share data interface for reading share data from a text file.
+    /// Represents a share data file reader.
     /// The text file should contain a comma separated list of share prices for a month.
     /// </summary>
     internal class ShareFileReader : IShareData
@@ -20,6 +20,10 @@ namespace App
             _filePath = filePath;
         }
 
+        /// <summary>
+        /// Get the daily share data.
+        /// </summary>
+        /// <returns>An array of share data for the month.</returns>
         public decimal[] GetShareData()
         {
             var sharePriceText = GetSharePriceText(_filePath);

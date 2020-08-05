@@ -1,11 +1,19 @@
-﻿using Interfaces;
+﻿using CommandLine;
+using Interfaces;
 using Model;
 using Search;
 using System;
 using System.IO;
 
+
 namespace App
 {
+    public class Options
+    {
+        [Option('p', "path", Required = true, HelpText = "Enter full path to the share .txt file.")]
+        public string Path { get; set; }
+    }
+
     class Program
     {
         /// <summary>
@@ -14,40 +22,34 @@ namespace App
         /// <param name="args">Set args[0] to full path to file for debugging.</param>
         static void Main(string[] args)
         {
-            try
-            {
-                string path;
-
-                if (args.Length == 0)
+            Parser.Default.ParseArguments<Options>(args)
+                .WithParsed<Options>(o =>
                 {
-                    Console.WriteLine("Please enter the full path to the text file containing the share data");
-
-                    path = Console.ReadLine();
-                }
-                else
-                {
-                    path = args[0];
-                }
-
-                IShareData reader = new ShareFileReader(path);
-                var data = reader.GetShareData();
-
-                var buySellIndices = SharePrices.GetBestBuySellIndices(data);
-
-                var info = new BuySellInfo(data, buySellIndices.Item1, buySellIndices.Item2);
-
-                Console.WriteLine(info.ToString());
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Shares data file not found.");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Shares data file is not in correct format. It should be a comma separated list of prices.");
-            }
+                    try
+                    {
+                        Console.WriteLine(GetBuySellInfo(o.Path));
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        Console.WriteLine($"Shares data file not found.");
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Shares data file is not in correct format. It should be a comma separated list of prices.");
+                    }
+                });
         }
 
+        private static BuySellInfo GetBuySellInfo(string path)
+        {
+            IShareData fileReader = new ShareFileReader(path);
+            var data = fileReader.GetShareData();
 
+            var buySellIndices = SharePrices.GetBestBuySellIndices(data);
+
+            var shareInfo = new BuySellInfo(data, buySellIndices.Item1, buySellIndices.Item2);
+
+            return shareInfo;
+        }
     }
 }
