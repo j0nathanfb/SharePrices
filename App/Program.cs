@@ -23,7 +23,7 @@ namespace App
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
-                .WithParsed<Options>(o =>
+                .WithParsed(o =>
                 {
                     try
                     {
