@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace Search.Tests
 {
@@ -25,9 +26,17 @@ namespace Search.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void NullUserIdInConstructor()
+        public void GetBestBuySellIndicesThrowsExceptionForEmptyArray()
         {
             SharePrices.GetBestBuySellIndices(new decimal[] { });
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetBestBuySellIndicesThrowsExceptionWhenInputLengthIsGreaterThanThirty()
+        {
+            var input = Enumerable.Range(1, 31).Select(x => (decimal)x).ToArray();
+            SharePrices.GetBestBuySellIndices(input);
         }
 
         readonly decimal[] _firstMonthPrices = new decimal[] { 18.93M, 20.25M, 17.05M, 16.59M, 21.09M, 16.22M, 21.43M, 27.13M, 18.62M, 21.31M, 23.96M, 25.52M, 19.64M, 23.49M, 15.28M, 22.77M, 23.1M, 26.58M, 27.03M, 23.75M, 27.39M, 15.93M, 17.83M, 18.82M, 21.56M, 25.33M, 25, 19.33M, 22.08M, 24.03M };

@@ -2,6 +2,9 @@
 
 namespace Search
 {
+    /// <summary>
+    /// Algorithms for searching share prices.
+    /// </summary>
     public class SharePrices
     {
         /// <summary>
@@ -12,6 +15,7 @@ namespace Search
         public static Tuple<int, int> GetBestBuySellIndices(decimal[] sharePrices)
         {
             if (sharePrices.Length == 0) throw new ArgumentException("sharePrices array is empty", nameof(sharePrices));
+            // Todo: JB 06/08/2020 Checking for length greater than 30. Should this be greater than 31? Need to confirm.
             if (sharePrices.Length > 30) throw new ArgumentException("sharePrices array length is greater than 30", nameof(sharePrices));
 
             var maxIncrease = 0.0M;
